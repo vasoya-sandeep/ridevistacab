@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ColdCore — Sign In</title>
+
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0D1319" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="ColdCore" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body class="login-body">
+
+<div class="login-wrap">
+  <div class="login-card">
+    <div class="login-brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" width="42" height="42" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="#161F29" stroke="#2A3742" stroke-width="1.5"/>
+        <path d="M20 6 A14 14 0 0 0 8 27" fill="none" stroke="#2E9BF0" stroke-width="3.5" stroke-linecap="round"/>
+        <path d="M20 6 A14 14 0 0 1 32 27" fill="none" stroke="#E4483C" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="20" cy="20" r="2.5" fill="#F5A623"/>
+      </svg>
+      <div class="brand-text">
+        <span class="brand-name">ColdCore</span>
+        <span class="brand-sub">Refrigeration Monitor</span>
+      </div>
+    </div>
+
+    <form id="loginForm" novalidate>
+      <label class="field">
+        <span>Username</span>
+        <input type="text" id="username" autocomplete="username" placeholder="admin" required />
+      </label>
+      <label class="field">
+        <span>Password</span>
+        <input type="password" id="password" autocomplete="current-password" placeholder="••••••••" required />
+      </label>
+
+      <div class="login-row">
+        <label class="remember">
+          <input type="checkbox" id="rememberMe" checked />
+          Remember me
+        </label>
+      </div>
+
+      <p class="login-error" id="loginError" hidden>Invalid username or password</p>
+
+      <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+    </form>
+
+    <p class="login-hint">Demo credentials — <strong>admin</strong> / <strong>admin123</strong></p>
+  </div>
+</div>
+
+<script src="auth.js"></script>
+<script>
+  const form = document.getElementById("loginForm");
+  const errorEl = document.getElementById("loginError");
+  const loginBtn = document.getElementById("loginBtn");
+
+  // Already signed in (remember me from a previous visit) — skip straight to the dashboard
+  if (ColdCoreAuth.isAuthenticated()) {
+    window.location.replace("index.html");
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
+    const remember = document.getElementById("rememberMe").checked;
+
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Signing in…";
+
+    // Tiny delay so it reads as a real auth check rather than an instant local if-statement
+    setTimeout(() => {
+      if (ColdCoreAuth.attemptLogin(username, password, remember)) {
+        window.location.href = "index.html";
+      } else {
+        errorEl.hidden = false;
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Sign In";
+      }
+    }, 400);
+  });
+</script>
+</body>
+</html>

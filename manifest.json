@@ -2,7 +2,7 @@
   "name": "ColdCore Refrigeration Monitor",
   "short_name": "ColdCore",
   "description": "Industrial refrigeration SCADA monitoring — live plant status, anywhere.",
-  "start_url": "./index.html",
+  "start_url": "./login.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",

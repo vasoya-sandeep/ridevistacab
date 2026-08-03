@@ -87,6 +87,11 @@ window.addEventListener("online", updateConnectionState);
 window.addEventListener("offline", updateConnectionState);
 updateConnectionState();
 
+// ---------- Logout ----------
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  ColdCoreAuth.logout();
+});
+
 // ---------- Clock ----------
 function tickClock() {
   document.getElementById("clock").textContent = new Date().toLocaleTimeString();

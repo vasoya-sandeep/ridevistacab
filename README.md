@@ -38,13 +38,24 @@ Safari doesn't support the automatic prompt, so the app detects iOS and shows on
 - Relaunch from the home screen icon → no browser chrome, feels native
 - Point out the theme-colored status bar and splash background — comes from `manifest.json`
 
+## Login
+
+The app now opens on a sign-in screen before the dashboard, so a demo feels like a real application rather than a single open page.
+
+- **Username:** `admin`
+- **Password:** `admin123`
+- "Remember me" keeps the session after the browser/app is closed; unchecked, it clears when the tab closes
+- Logging out (top-right icon on the dashboard) clears the session and returns to the login screen
+- This is dummy client-side auth for the demo only — no real backend, no encryption. Wire it to a real API before this goes anywhere near production.
+
 ## Files
 
 | File | Purpose |
 |---|---|
-| `manifest.json` | App identity, icons, colors, `display: standalone` |
+| `manifest.json` | App identity, icons, colors, `display: standalone`, launches on `login.html` |
 | `service-worker.js` | Offline caching + auto-update on next launch |
-| `index.html` / `styles.css` / `app.js` | Dashboard shell + the install-prompt logic |
+| `login.html` / `auth.js` | Sign-in screen and dummy auth check |
+| `index.html` / `styles.css` / `app.js` | Dashboard shell + the install-prompt logic + logout |
 | `icons/` | 192/512/maskable PNGs + iOS touch icon |
 
 ## Carrying this into the full Angular build

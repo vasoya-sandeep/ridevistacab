@@ -221,6 +221,90 @@ html, body {
 }
 .nav-btn.active { color: var(--blue); }
 
+/* ---- Login page ---- */
+.login-body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background:
+    radial-gradient(circle at 20% -10%, rgba(46,155,240,0.14), transparent 45%),
+    radial-gradient(circle at 90% 110%, rgba(228,72,60,0.10), transparent 45%),
+    var(--bg-deep);
+}
+.login-wrap { width: 100%; max-width: 380px; }
+.login-card {
+  background: var(--panel);
+  border: 1px solid var(--hairline);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.login-brand { display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 4px; }
+.login-brand .brand-name { font-size: 18px; }
+
+#loginForm { display: flex; flex-direction: column; gap: 16px; }
+.field { display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+.field input {
+  font-family: var(--font-ui);
+  font-size: 15px;
+  color: var(--text-primary);
+  background: var(--panel-raised);
+  border: 1px solid var(--hairline);
+  border-radius: 9px;
+  padding: 11px 12px;
+  outline: none;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.field input:focus { border-color: var(--blue); }
+
+.login-row { display: flex; align-items: center; justify-content: space-between; }
+.remember { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--text-dim); cursor: pointer; }
+.remember input { accent-color: var(--blue); }
+
+.login-error {
+  margin: -6px 0 0;
+  color: var(--red);
+  font-size: 13px;
+  background: rgba(228,72,60,0.1);
+  border: 1px solid rgba(228,72,60,0.3);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.login-btn {
+  background: var(--blue);
+  color: #0D1319;
+  border: none;
+  font-weight: 700;
+  font-size: 14.5px;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.login-btn:hover { background: #4FADF5; }
+.login-btn:disabled { opacity: 0.7; cursor: default; }
+
+.login-hint { text-align: center; font-size: 12.5px; color: var(--text-dim); margin: 0; }
+.login-hint strong { color: var(--text-primary); font-family: var(--font-mono); }
+
+/* ---- Logout button (dashboard header) ---- */
+.logout-btn {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--panel-raised);
+  border: 1px solid var(--hairline);
+  border-radius: 8px;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+.logout-btn:hover { color: var(--red); border-color: var(--red); }
+
 /* ---- Responsive: tablet ---- */
 @media (min-width: 640px) {
   .dashboard { padding: 28px; }
