@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>ColdCore Refrigeration Monitor</title>
+
+<!-- Core PWA wiring -->
+<link rel="manifest" href="manifest.json" />
+<meta name="theme-color" content="#0D1319" />
+
+<!-- iOS install support (Safari ignores the manifest for these bits) -->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="ColdCore" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+
+<link rel="icon" href="icons/icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="offline-banner" id="offlineBanner">You're offline — showing last known plant status</div>
+
+<header class="app-header">
+  <div class="brand">
+    <svg class="brand-mark" viewBox="0 0 40 40" width="30" height="30" aria-hidden="true">
+      <circle cx="20" cy="20" r="18" fill="#161F29" stroke="#2A3742" stroke-width="1.5"/>
+      <path d="M20 6 A14 14 0 0 0 8 27" fill="none" stroke="#2E9BF0" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M20 6 A14 14 0 0 1 32 27" fill="none" stroke="#E4483C" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="20" cy="20" r="2.5" fill="#F5A623"/>
+    </svg>
+    <div class="brand-text">
+      <span class="brand-name">ColdCore</span>
+      <span class="brand-sub">Refrigeration Monitor</span>
+    </div>
+  </div>
+  <div class="header-right">
+    <span class="conn-pill" id="connPill"><i></i>Live</span>
+    <time class="clock" id="clock">--:--:--</time>
+  </div>
+</header>
+
+<main class="dashboard">
+
+  <!-- INSTALL CARD — the centerpiece of this demo -->
+  <section class="install-card" id="installCard">
+    <div class="install-copy">
+      <span class="install-eyebrow">Run this as an app</span>
+      <h1>Install ColdCore on this device</h1>
+      <p>No app store. Full screen, works offline, launches from your home screen like any native app — installed straight from this browser tab.</p>
+    </div>
+
+    <button class="install-btn" id="installBtn" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Install App
+    </button>
+
+    <div class="install-status" id="installStatus" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 13l4 4L19 7" stroke="#3ED598" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Installed — launch it from your home screen
+    </div>
+
+    <!-- iOS Safari has no install prompt API — walk them through it manually -->
+    <ol class="ios-steps" id="iosSteps" hidden>
+      <li>Tap the <strong>Share</strong> icon <span class="ios-icon">⬆︎</span> in Safari's toolbar</li>
+      <li>Scroll down and tap <strong>Add to Home Screen</strong></li>
+      <li>Tap <strong>Add</strong> — ColdCore now opens full screen, no browser bar</li>
+    </ol>
+
+    <p class="install-fallback" id="genericFallback" hidden>
+      Open your browser menu and choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.
+    </p>
+  </section>
+
+  <!-- Representative live panel, kept intentionally lean — the point of this build is the install experience -->
+  <section class="gauges">
+    <div class="gauge-card">
+      <span class="gauge-label">Suction Pressure</span>
+      <svg viewBox="0 0 120 70" class="gauge">
+        <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="#2A3742" stroke-width="8"/>
+        <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="#2E9BF0" stroke-width="8" stroke-dasharray="157" id="suctionArc"/>
+        <line x1="60" y1="65" x2="60" y2="25" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" id="suctionNeedle" style="transform-origin:60px 65px"/>
+        <circle cx="60" cy="65" r="3.5" fill="#F5A623"/>
+      </svg>
+      <span class="gauge-value" id="suctionValue">-- <small>psi</small></span>
+    </div>
+    <div class="gauge-card">
+      <span class="gauge-label">Discharge Pressure</span>
+      <svg viewBox="0 0 120 70" class="gauge">
+        <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="#2A3742" stroke-width="8"/>
+        <path d="M10 65 A50 50 0 0 1 110 65" fill="none" stroke="#E4483C" stroke-width="8" stroke-dasharray="157" id="dischargeArc"/>
+        <line x1="60" y1="65" x2="60" y2="25" stroke="#F5A623" stroke-width="2.5" stroke-linecap="round" id="dischargeNeedle" style="transform-origin:60px 65px"/>
+        <circle cx="60" cy="65" r="3.5" fill="#F5A623"/>
+      </svg>
+      <span class="gauge-value" id="dischargeValue">-- <small>psi</small></span>
+    </div>
+  </section>
+
+  <section class="compressors" id="compressors"></section>
+
+  <section class="alarms">
+    <span class="alarm-lamp green" title="Normal"></span>
+    <span class="alarm-lamp yellow" title="Warning"></span>
+    <span class="alarm-lamp red" id="alarmRed" title="Critical"></span>
+    <span class="alarm-text">Plant status: <strong id="alarmText">Normal</strong></span>
+  </section>
+
+</main>
+
+<div class="update-toast" id="updateToast" hidden>
+  <span>An update is ready</span>
+  <button id="updateBtn">Refresh</button>
+</div>
+
+<footer class="app-footer">
+  <button class="nav-btn active"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 11l9-8 9 8M5 10v10h14V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Home</button>
+  <button class="nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 19V5m6 14V9m6 10V13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Data</button>
+  <button class="nav-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/><path d="M19 12a7 7 0 00-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 00-2-1.2L14 3h-4l-.5 2.6a7 7 0 00-2 1.2l-2.4-1-2 3.4 2 1.6A7 7 0 005 12c0 .4 0 .8.1 1.2l-2 1.6 2 3.4 2.4-1a7 7 0 002 1.2L10 21h4l.5-2.6a7 7 0 002-1.2l2.4 1 2-3.4-2-1.6c.1-.4.1-.8.1-1.2z" stroke="currentColor" stroke-width="1.6"/></svg>Settings</button>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
