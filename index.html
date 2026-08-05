@@ -2,66 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Ride Vista Cabs | Outstation Cab Service Ahmedabad</title>
-  <meta name="description" content="Ride Vista Cabs offers reliable outstation taxis from Ahmedabad with fixed rates, transparent billing, professional drivers, and clean Sedan, SUV, and Prime SUV options." />
-  <link rel="manifest" href="manifest.json" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ride Vista Cabs | Ahmedabad Outstation Taxi Service</title>
+  <meta name="description" content="Book Ride Vista Cabs for Ahmedabad outstation taxi service with clear rates, reliable drivers, clean cars, and Sedan, SUV, and Prime SUV options." />
   <meta name="theme-color" content="#0f172a" />
+  <link rel="manifest" href="manifest.json" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Ride Vista" />
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
-  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="icon" href="assets/ride-vista-logo.svg" type="image/svg+xml" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="offline-banner" id="offlineBanner">You are offline — saved Ride Vista details are still available.</div>
-
   <header class="site-header">
     <a class="brand" href="#home" aria-label="Ride Vista Cabs home">
-      <span class="brand-mark">RV</span>
-      <span>
+      <img class="brand-logo" src="assets/ride-vista-logo.svg" alt="Ride Vista logo" />
+      <span class="brand-copy">
         <strong>Ride Vista Cabs</strong>
-        <small>Ahmedabad Outstation Taxi</small>
+        <small>Outstation Taxi • Ahmedabad</small>
       </span>
     </a>
-    <nav class="nav-links" aria-label="Primary navigation">
-      <a href="#why-us">Why us</a>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="primaryNav">Menu</button>
+    <nav class="nav-links" id="primaryNav" aria-label="Primary navigation">
+      <a href="#services">Services</a>
       <a href="#fleet">Fleet</a>
       <a href="#routes">Routes</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="header-cta" href="tel:+919998897897">Call Now</a>
+    <div class="header-actions">
+      <a class="mini-action mini-call" href="tel:+919998897897">Call</a>
+      <a class="mini-action mini-whatsapp" href="https://wa.me/919998897897?text=Hello%20Ride%20Vista%20Cabs%2C%20I%20want%20to%20book%20an%20outstation%20cab." target="_blank" rel="noopener">WhatsApp</a>
+    </div>
   </header>
 
   <main id="home">
     <section class="hero section-shell">
-      <div class="hero-copy">
-        <p class="eyebrow">Fixed rates • No hidden fees • 24/7 service</p>
-        <h1>Reliable outstation cabs from Ahmedabad.</h1>
-        <p class="hero-lede">Book professional Sedan, SUV, and Prime SUV rentals for family trips, pilgrimages, business travel, and long-distance Gujarat routes.</p>
+      <div class="hero-content">
+        <p class="eyebrow">Ahmedabad's trusted outstation cab partner</p>
+        <h1>Premium cabs for smooth Gujarat road trips.</h1>
+        <div class="hero-logo-card"><img src="assets/ride-vista-logo.svg" alt="Ride Vista travel logo" /></div>
+        <p class="hero-lede">Ride Vista Cabs helps families, tourists, and business travelers book clean cars, professional chauffeurs, and transparent outstation rides from Ahmedabad.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="tel:+919998897897">Book Your Cab Now</a>
-          <a class="btn btn-secondary" href="mailto:help.ridevistacab@gmail.com">Email Us</a>
+          <a class="btn btn-primary" href="tel:+919998897897">📞 Call 9998897897</a>
+          <a class="btn btn-whatsapp" href="https://wa.me/919998897897?text=Hello%20Ride%20Vista%20Cabs%2C%20please%20share%20cab%20availability%20and%20rates." target="_blank" rel="noopener">💬 WhatsApp Now</a>
         </div>
-        <dl class="quick-contact" aria-label="Booking contact details">
-          <div><dt>Phone</dt><dd><a href="tel:+919998897897">9998897897</a></dd></div>
-          <div><dt>Email</dt><dd><a href="mailto:help.ridevistacab@gmail.com">help.ridevistacab@gmail.com</a></dd></div>
-        </dl>
-      </div>
-      <div class="hero-card" aria-label="Ride Vista booking highlight">
-        <div class="route-chip">Ahmedabad ⇄ Gujarat</div>
-        <div class="car-illustration" aria-hidden="true">
-          <span class="window"></span><span class="wheel wheel-one"></span><span class="wheel wheel-two"></span>
+        <div class="trust-row" aria-label="Ride Vista service benefits">
+          <span>Fixed rates</span>
+          <span>No hidden fees</span>
+          <span>24/7 support</span>
         </div>
-        <h2>Clean, comfortable cars with expert chauffeurs.</h2>
-        <p>Transparent billing and punctual drivers for dependable outstation journeys.</p>
       </div>
+
+      <aside class="booking-card" aria-label="Quick booking card">
+        <div class="booking-card-top">
+          <span class="live-dot"></span>
+          <strong>Quick Cab Booking</strong>
+        </div>
+        <div class="route-preview">
+          <span>Ahmedabad</span>
+          <i></i>
+          <span>Somnath • Diu • Dwarka • Kutch</span>
+        </div>
+        <div class="car-scene" aria-hidden="true">
+          <span class="sun"></span>
+          <span class="road"></span>
+          <span class="car-body"><b></b><i></i><em></em></span>
+        </div>
+        <ul class="booking-points">
+          <li>Sanitized Sedan, SUV & Prime SUV options</li>
+          <li>Experienced drivers for long-distance routes</li>
+          <li>Share trip details and get a fast quote</li>
+        </ul>
+      </aside>
     </section>
 
     <section class="install-card section-shell" id="installCard">
       <div>
-        <p class="eyebrow">Add this page</p>
+        <p class="eyebrow">Quick access</p>
         <h2>Save Ride Vista Cabs to your phone</h2>
         <p>Install this website as an app for quick booking access, contact details, fleet options, and route information.</p>
       </div>
@@ -75,60 +93,95 @@
       <p class="install-fallback" id="genericFallback" hidden>Open your browser menu and choose <strong>Install app</strong> or <strong>Add to Home screen</strong>.</p>
     </section>
 
-    <section class="section-shell" id="why-us">
-      <div class="section-heading">
-        <p class="eyebrow">Why book with us</p>
-        <h2>Simple, trusted outstation travel</h2>
+    <section class="contact-strip section-shell" aria-label="Fast contact options">
+      <div>
+        <strong>Need a cab today?</strong>
+        <span>Call or WhatsApp for availability, fare, pickup time, and car category.</span>
+      </div>
+      <div class="strip-actions">
+        <a href="tel:+919998897897">Call Now</a>
+        <a href="https://wa.me/919998897897?text=Hello%20Ride%20Vista%20Cabs%2C%20I%20need%20a%20cab%20today." target="_blank" rel="noopener">Send WhatsApp</a>
+      </div>
+    </section>
+
+    <section class="section-shell" id="services">
+      <div class="section-heading center">
+        <p class="eyebrow">Why customers choose us</p>
+        <h2>Reliable, clear, and comfortable travel</h2>
+        <p>Everything is designed around a better outstation taxi experience: simple booking, clean vehicles, trained drivers, and transparent pricing.</p>
       </div>
       <div class="feature-grid">
-        <article><span>₹</span><h3>No hidden charges</h3><p>Clear and transparent billing before you ride.</p></article>
-        <article><span>🧑‍✈️</span><h3>Expert drivers</h3><p>Punctual, professional chauffeurs for long routes.</p></article>
-        <article><span>24</span><h3>24/7 service</h3><p>Available whenever you need to travel.</p></article>
-        <article><span>✨</span><h3>Clean cars</h3><p>Sanitized, well-maintained vehicles for every ride.</p></article>
+        <article><span>₹</span><h3>Transparent billing</h3><p>Clear pricing discussions before the trip, with no hidden fees.</p></article>
+        <article><span>🧭</span><h3>Route experience</h3><p>Drivers familiar with Gujarat's popular tourist, pilgrimage, and business routes.</p></article>
+        <article><span>✨</span><h3>Clean vehicles</h3><p>Well-maintained Sedan, SUV, and Prime SUV options for all group sizes.</p></article>
+        <article><span>🕘</span><h3>24/7 booking</h3><p>Call or WhatsApp anytime to check availability and plan your ride.</p></article>
       </div>
     </section>
 
     <section class="section-shell fleet-section" id="fleet">
       <div class="section-heading">
-        <p class="eyebrow">A full service experience</p>
-        <h2>Choose the right cab for your journey</h2>
+        <p class="eyebrow">Fleet options</p>
+        <h2>Select the right car for your travel plan</h2>
       </div>
       <div class="fleet-grid">
-        <article class="fleet-card"><div class="fleet-icon sedan"></div><h3>Sedan</h3><p>Dzire / Etios</p><strong>4+1 seater</strong><span>Perfect for small families.</span></article>
-        <article class="fleet-card"><div class="fleet-icon suv"></div><h3>SUV</h3><p>Ertiga / XL6</p><strong>6+1 seater</strong><span>Great for group travel.</span></article>
-        <article class="fleet-card"><div class="fleet-icon prime"></div><h3>Prime SUV</h3><p>Innova Crysta</p><strong>6+1 seater</strong><span>Premium comfort for long trips.</span></article>
+        <article class="fleet-card">
+          <div class="fleet-visual sedan"><span></span></div>
+          <h3>Sedan</h3>
+          <p>Dzire / Etios</p>
+          <strong>4+1 seater</strong>
+          <a href="https://wa.me/919998897897?text=Hello%2C%20I%20want%20to%20book%20a%20Sedan%20cab." target="_blank" rel="noopener">Book Sedan</a>
+        </article>
+        <article class="fleet-card featured">
+          <div class="popular-badge">Popular</div>
+          <div class="fleet-visual suv"><span></span></div>
+          <h3>SUV</h3>
+          <p>Ertiga / XL6</p>
+          <strong>6+1 seater</strong>
+          <a href="https://wa.me/919998897897?text=Hello%2C%20I%20want%20to%20book%20an%20SUV%20cab." target="_blank" rel="noopener">Book SUV</a>
+        </article>
+        <article class="fleet-card">
+          <div class="fleet-visual prime"><span></span></div>
+          <h3>Prime SUV</h3>
+          <p>Innova Crysta</p>
+          <strong>6+1 seater</strong>
+          <a href="https://wa.me/919998897897?text=Hello%2C%20I%20want%20to%20book%20a%20Prime%20SUV%20cab." target="_blank" rel="noopener">Book Prime SUV</a>
+        </article>
       </div>
     </section>
 
-    <section class="section-shell" id="routes">
-      <div class="section-heading">
-        <p class="eyebrow">Popular routes</p>
-        <h2>Outstation cab routes from Ahmedabad</h2>
+    <section class="routes section-shell" id="routes">
+      <div class="section-heading center">
+        <p class="eyebrow">Popular destinations</p>
+        <h2>Outstation routes from Ahmedabad</h2>
       </div>
       <div class="route-grid">
-        <span>Ahmedabad to Somnath</span><span>Ahmedabad to Diu</span><span>Ahmedabad to Dwarka</span><span>Ahmedabad to Kutch</span>
-        <span>Bhuj</span><span>Dhordo</span><span>Rajkot</span><span>Junagadh</span><span>Sarangpur</span><span>Statue of Unity</span><span>Surat</span><span>Sasan Gir</span><span>Gandhidham</span>
+        <span>Somnath</span><span>Diu</span><span>Dwarka</span><span>Kutch</span><span>Bhuj</span><span>Dhordo</span><span>Rajkot</span><span>Junagadh</span><span>Sarangpur</span><span>Statue of Unity</span><span>Surat</span><span>Sasan Gir</span><span>Gandhidham</span>
       </div>
     </section>
 
     <section class="contact-section section-shell" id="contact">
-      <div>
-        <p class="eyebrow">Book your cab now</p>
-        <h2>Call or email Ride Vista Cabs</h2>
-        <p>Share your pickup date, destination, passenger count, and preferred car category to get a fixed-rate booking quote.</p>
+      <div class="contact-copy">
+        <p class="eyebrow">Book your cab</p>
+        <h2>Tell us your destination. We’ll help you plan the ride.</h2>
+        <p>Send your pickup location, date, destination, passengers, and preferred car type for a quick quote.</p>
       </div>
-      <div class="contact-actions">
-        <a class="btn btn-primary" href="tel:+919998897897">Call 9998897897</a>
-        <a class="btn btn-secondary" href="mailto:help.ridevistacab@gmail.com">help.ridevistacab@gmail.com</a>
+      <div class="contact-card">
+        <a class="contact-link call" href="tel:+919998897897"><span>📞</span><strong>Call</strong><em>9998897897</em></a>
+        <a class="contact-link whatsapp" href="https://wa.me/919998897897?text=Hello%20Ride%20Vista%20Cabs%2C%20I%20want%20to%20book%20a%20cab." target="_blank" rel="noopener"><span>💬</span><strong>WhatsApp</strong><em>Message us now</em></a>
+        <a class="contact-link email" href="mailto:help.ridevistacab@gmail.com"><span>✉️</span><strong>Email</strong><em>help.ridevistacab@gmail.com</em></a>
       </div>
     </section>
   </main>
 
+  <div class="mobile-action-bar" aria-label="Quick mobile booking actions">
+    <a href="tel:+919998897897">Call</a>
+    <a href="https://wa.me/919998897897?text=Hello%20Ride%20Vista%20Cabs%2C%20I%20want%20to%20book%20a%20cab." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+
   <footer class="site-footer">
-    <p>© <span id="year"></span> Ride Vista Cabs. Reliable outstation cabs from Ahmedabad.</p>
+    <p>© <span id="year"></span> Ride Vista Cabs. Outstation taxi service from Ahmedabad.</p>
   </footer>
 
-  <div class="update-toast" id="updateToast" hidden><span>An update is ready</span><button id="updateBtn">Refresh</button></div>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,10 +1,11 @@
-const CACHE_VERSION = "ride-vista-cabs-v1";
+const CACHE_VERSION = "ride-vista-cabs-v2";
 const CORE_ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./manifest.json",
+  "./assets/ride-vista-logo.svg",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/apple-touch-icon.png"
@@ -38,8 +39,4 @@ self.addEventListener("fetch", (event) => {
       return cached || network;
     })
   );
-});
-
-self.addEventListener("message", (event) => {
-  if (event.data === "SKIP_WAITING") self.skipWaiting();
 });

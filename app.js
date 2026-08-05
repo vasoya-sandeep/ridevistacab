@@ -1,25 +1,23 @@
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("service-worker.js").then((reg) => {
-      reg.addEventListener("updatefound", () => {
-        const installing = reg.installing;
-        if (!installing) return;
-        installing.addEventListener("statechange", () => {
-          if (installing.state === "installed" && navigator.serviceWorker.controller) {
-            document.getElementById("updateToast").hidden = false;
-          }
-        });
-      });
-    });
-  });
-
-  document.getElementById("updateBtn").addEventListener("click", () => {
-    navigator.serviceWorker.getRegistration().then((reg) => {
-      if (reg && reg.waiting) reg.waiting.postMessage("SKIP_WAITING");
-      window.location.reload();
-    });
+    navigator.serviceWorker.register("service-worker.js");
   });
 }
+
+const menuToggle = document.getElementById("menuToggle");
+const primaryNav = document.getElementById("primaryNav");
+
+menuToggle.addEventListener("click", () => {
+  const isOpen = primaryNav.classList.toggle("open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
+
+primaryNav.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", () => {
+    primaryNav.classList.remove("open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  });
+});
 
 const installBtn = document.getElementById("installBtn");
 const installStatus = document.getElementById("installStatus");
@@ -62,12 +60,5 @@ window.addEventListener("appinstalled", () => {
   iosSteps.hidden = true;
   installStatus.hidden = false;
 });
-
-function updateConnectionState() {
-  offlineBanner.classList.toggle("show", !navigator.onLine);
-}
-window.addEventListener("online", updateConnectionState);
-window.addEventListener("offline", updateConnectionState);
-updateConnectionState();
 
 document.getElementById("year").textContent = new Date().getFullYear();
