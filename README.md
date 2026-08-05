@@ -10,7 +10,6 @@ A modern static PWA website for Ride Vista Cabs, an Ahmedabad outstation cab ser
 - 24/7 booking support by call and WhatsApp
 - Logo-driven modern theme using the Ride Vista blue, orange, and green travel palette
 - Installable PWA support without update toast interruptions
-- Service worker uses a network-first strategy so merged changes show promptly while still supporting offline fallback
 - Sedan, SUV, and Prime SUV cab options
 - Routes include Somnath, Diu, Dwarka, Kutch, Bhuj, Dhordo, Rajkot, Junagadh, Sarangpur, Statue of Unity, Surat, Sasan Gir, and Gandhidham
 

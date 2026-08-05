@@ -1,4 +1,4 @@
-const CACHE_VERSION = "ride-vista-cabs-v3";
+const CACHE_VERSION = "ride-vista-cabs-v2";
 const CORE_ASSETS = [
   "./",
   "./index.html",
