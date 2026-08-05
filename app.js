@@ -23,6 +23,7 @@ const installBtn = document.getElementById("installBtn");
 const installStatus = document.getElementById("installStatus");
 const iosSteps = document.getElementById("iosSteps");
 const genericFallback = document.getElementById("genericFallback");
+const offlineBanner = document.getElementById("offlineBanner");
 
 const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
 const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
